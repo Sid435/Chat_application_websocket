@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 
-    @Query("{'status' : ?0}")
+    @Query("{ 'status' : ?0 }")
     List<User> findByStatus(Status status);
 }

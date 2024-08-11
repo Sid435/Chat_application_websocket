@@ -23,7 +23,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws")
+        registry.addEndpoint("/ws") // Defining STOMP endpoint
                 .withSockJS();
     }
 
@@ -34,7 +34,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         converter.setObjectMapper(new ObjectMapper());
 
         DefaultContentTypeResolver resolver = new DefaultContentTypeResolver();
-        resolver.setDefaultMimeType(MimeTypeUtils.APPLICATION_JSON);
+        resolver.setDefaultMimeType(MimeTypeUtils.APPLICATION_JSON); // defining text format
         converter.setContentTypeResolver(resolver);
         messageConverters.add(new StringMessageConverter());
         messageConverters.add(new ByteArrayMessageConverter());

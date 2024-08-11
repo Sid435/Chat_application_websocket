@@ -17,8 +17,12 @@ public class UserController {
 
     private final UserService service;
 
-    @MessageMapping("/user.addUser")
-    @SendTo("/user/topic")
+    /*
+    * Message Mapping maps message from a client to a specific handler methods on the server
+    * It is similar to how RequestMapping maps HTTP request to handler methods in a REST controller */
+
+    @MessageMapping("/user.addUser") // the request with the given url will be processed by the following method
+    @SendTo("/user/topic") // once the request is processed by the method, the resulting value is sent to the given URL.
     public User addUser(
             @Payload  User user
     ){
@@ -28,7 +32,7 @@ public class UserController {
 
     @MessageMapping("/user.disconnectUser")
     @SendTo("/user/topic")
-    public User disconnect(
+    public User disconnectUser(
             @Payload User user
     ){
         service.disconnect(user);
