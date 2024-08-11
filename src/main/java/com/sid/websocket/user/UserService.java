@@ -10,12 +10,12 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository repository;
-    public void saveUser(User user){
+    public void saveUser(User user){ // Getting all the info of the user from the payload then making the user status "ONLINE"
         user.setStatus(Status.ONLINE);
         repository.save(user);
     }
 
-    public void disconnect(User user){
+    public void disconnect(User user){ // Getting the user by ID and then updating the status of the user to "OFFLINE"
         var stored = repository.findById(user.getNickName())
                 .orElse(null);
         if(stored!= null){
@@ -24,7 +24,7 @@ public class UserService {
         }
 
     }
-    public List<User> findConnectedUsers(){
+    public List<User> findConnectedUsers(){ // finding all the users whose status is "ONLINE"
         return repository.findByStatus(Status.ONLINE);
     }
 }
