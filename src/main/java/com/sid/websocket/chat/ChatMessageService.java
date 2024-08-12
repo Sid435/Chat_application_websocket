@@ -4,6 +4,7 @@ import com.sid.websocket.ChattersApplication;
 import com.sid.websocket.chatroom.ChatRoom;
 import com.sid.websocket.chatroom.ChatRoomService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,7 +13,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ChatMessageService {
+    @Autowired
     private final ChatMessageRepository repository;
+    @Autowired
     private final ChatRoomService service;
 
     public ChatMessage save(ChatMessage chatMessage){

@@ -1,6 +1,7 @@
 package com.sid.websocket.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
+    @Autowired
     private final UserService service;
 
     /*
@@ -22,7 +24,7 @@ public class UserController {
     * It is similar to how RequestMapping maps HTTP request to handler methods in a REST controller */
 
     @MessageMapping("/user.addUser") // the request with the given url will be processed by the following method
-    @SendTo("/user/topic") // once the request is processed by the method, the resulting value is sent to the given URL.
+    @SendTo("/user/public") // once the request is processed by the method, the resulting value is sent to the given URL.
     public User addUser(
             @Payload  User user
     ){
@@ -31,7 +33,7 @@ public class UserController {
     }
 
     @MessageMapping("/user.disconnectUser")
-    @SendTo("/user/topic")
+    @SendTo("/user/public")
     public User disconnectUser(
             @Payload User user
     ){

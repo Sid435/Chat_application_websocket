@@ -1,6 +1,7 @@
 package com.sid.websocket.chatroom;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -8,6 +9,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ChatRoomService {
+    @Autowired
     private ChatRoomRepository chatRoomRepository;
     public Optional<String> getChatRoomId(
             String senderId,
