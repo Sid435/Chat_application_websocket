@@ -28,7 +28,6 @@ public class ChatMessageService {
         repository.save(chatMessage);
         return chatMessage;
     }
-
     public List<ChatMessage> findChatMessages(
             String senderId, String recipientId
     ){
@@ -41,5 +40,4 @@ public class ChatMessageService {
                 repository::findByChatId
         ).orElse(new ArrayList<>());
     }
-
 }
